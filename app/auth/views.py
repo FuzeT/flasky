@@ -143,7 +143,7 @@ def change_email_request():
     form = ChangeEmailForm()
     if form.validate_on_submit():
         if current_user.verify_password(form.password.data):
-            new_email = form.email.data
+            new_email = formemail.data
             token = current_user.generate_email_change_token(new_email)
             send_email(new_email, 'Confirm your email address',
                        'auth/email/change_email',
